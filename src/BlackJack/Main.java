@@ -4,20 +4,21 @@ import java.util.Vector;
 
 public class Main {
 
-    public Banque banque = new Banque();
-    public Vector joueurHumainVector = new Vector();
-    public Jeu jeu = new Jeu(banque,joueurHumainVector);
-    public JoueurHumain franck = new JoueurHumain(new StrategieAleatoire(jeu),"franck");
-    public JoueurHumain pierre = new JoueurHumain(new StrategieAleatoire(jeu),"pierre");
-
-
-
-
-    public void main(){
+    public static void main(String[] args) {
+        Banque banque = new Banque();
+        JoueurHumain franck = new JoueurHumain(new StrategieAleatoire(),"franck");
+        JoueurHumain pierre = new JoueurHumain(new StrategieAleatoire(),"pierre");
+        Vector joueurHumainVector = new Vector();
         joueurHumainVector.add(franck);
         joueurHumainVector.add(pierre);
-        jeu.DebutJeu(jeu);
-        jeu.playTour();
+        Jeu jeu = new Jeu(banque,joueurHumainVector);
+        jeu.DebutJeu();
+        for (int i = 0; i < 3; i++) {
+            jeu.playTour();
+            System.out.println("Franck à :" + franck.getScore());
+            System.out.println("Pierre à:"+ pierre.getScore());
+            System.out.println("La banque à :"+ banque.getScore());
+        }
     }
 
 

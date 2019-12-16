@@ -5,9 +5,10 @@ import java.util.Vector;
 
 public class Joueurs {
 
-  public Integer Gain;
-  public Integer Score;
+  private Integer Gain;
+  private Integer Score;
   private Strategie strategie;
+  private Jeu jeu;
 
 
   public Joueurs(Strategie strategie){
@@ -16,11 +17,6 @@ public class Joueurs {
         this.Score=0;
 
     }
-
-    /**
-   * 
-   * @element-type BlackJack.Strategie
-   */
 
 
     public void play(){
@@ -34,7 +30,7 @@ public class Joueurs {
   public void VisualiserCartes() {
   }
   public void demanderCarte(Jeu jeu){
-        jeu.croupier.Distribuer1Carte();
+        Score+=jeu.croupier.Distribuer1Carte();
 
   }
   public void secoucher(){
@@ -47,5 +43,13 @@ public class Joueurs {
 
     public void setScore(Integer score) {
         Score = score;
+    }
+
+    public Jeu getJeu() {
+        return jeu;
+    }
+
+    public void setJeu(Jeu jeu) {
+        this.jeu = jeu;
     }
 }
